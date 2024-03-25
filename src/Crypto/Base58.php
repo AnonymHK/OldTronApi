@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tak\Tron\Crypto;
+namespace TronApi\Crypto;
 
 use InvalidArgumentException;
 

@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Tak\\Tron\\": "src"
+            "TronApi\\": "src"
         }
     },
     "authors": [

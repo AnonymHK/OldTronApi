@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Tak\Tron;
+namespace TronApi;
 
-use Tak\Tron\Crypto\Base58;
+use TronApi\Crypto\Base58;
 
 abstract class Tools {
 	public function address2hex(string $address) : string {

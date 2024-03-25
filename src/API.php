@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace Tak\Tron;
+namespace TronApi;
 
-use Tak\Tron\Crypto\Keccak;
+use TronApi\Crypto\Keccak;
 
-use Tak\Tron\Crypto\Base58;
+use TronApi\Crypto\Base58;
 
-use Tak\Tron\Crypto\Secp;
+use TronApi\Crypto\Secp;
 
 use Elliptic\EC;
 

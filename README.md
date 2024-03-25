@@ -28,7 +28,7 @@ This package requires PHP 8 or later. GMP and curl extensions require this packa
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Tak\Tron\API;
+use TronApi\API;
 
 $tron = new API();
 

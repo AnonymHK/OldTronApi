@@ -1,6 +1,6 @@
 <?php
 
-use Tak\Tron\API;
+use TronApi\API;
 
 $tron = new API();
 
