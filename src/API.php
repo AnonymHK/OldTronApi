@@ -120,6 +120,8 @@ final class API extends Tools {
 			srand($base);
 			shuffle($words);
 			$split = explode(chr(32),$phrase);
+			$integer = [];
+			$privatekey = '';
 			foreach($split as $number => $i):
 				$index = array_search($i,$words);
 				if($index === false):
@@ -140,17 +142,19 @@ final class API extends Tools {
 							$last = strval($index);
 						endif;
 						$privatekey = gmp_strval(implode($integer).$last,$base);
-						return strlen($privatekey) % 2 ? strval(0).$privatekey : $privatekey;
+						$privatekey = strlen($privatekey) % 2 ? strval(0).$privatekey : $privatekey;
 					else:
 						$index = str_pad(strval($index),3,strval(0),STR_PAD_LEFT);
 						$integer []= $index;
 					endif;
 				endif;
 			endforeach;
+			return $privatekey;
 		else:
 			throw new Exception('gmp extension is needed !');
 		endif;
 	}
+
 	public function getTransactionById(string $txID,bool $visible = true) : object {
 		$data = [
 			'value'=>$txID,
@@ -386,7 +390,7 @@ final class API extends Tools {
 	}
 	public function getBlock(string $idornum,bool $detail = false) : object {
 		$data = [
-			'id_or_num'=>$id,
+			'id_or_num'=>$idornum,
 			'detail'=>$detail
 		];
 		$block = $this->sender->request('POST','wallet/getblock',$data);
@@ -436,7 +440,7 @@ final class API extends Tools {
 			'sendToken' , 'sendTokenTransaction' => $this->transferAsset(...$arguments),
 			'getBandwidth' => $this->getAccountNet(...$arguments),
 			'registerAccount' => $this->createAccount(...$arguments),
-			'createAddress' => $this->generateAddress(...$arguments),
+			'createAddress' => $this->generateAddress(),
 			default => throw new Exception('Call to undefined method '.self::class.'::'.$method.'()')
 		};
 	}

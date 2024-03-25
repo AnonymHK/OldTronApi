@@ -1,5 +1,5 @@
 {
-    "name": "takpesar/tron",
+    "name": "anonymhk/tronapi",
     "license": "MIT",
     "description": "A PHP library to create Tron wallet addresses and manage wallets using the Tron API",
     "type": "library",
@@ -17,8 +17,7 @@
     },
     "authors": [
         {
-            "name": "Tak Pesar",
-            "email": "loser.man.2007@gmail.com"
+            "name": "anonymhk"
         }
     ],
     "minimum-stability": "stable",
