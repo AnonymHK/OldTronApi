@@ -16,5 +16,3 @@ abstract class Secp {
 		return $r.$s.$recoveryparam;
 	}
 }
-
-?>

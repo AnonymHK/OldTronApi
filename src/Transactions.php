@@ -38,5 +38,3 @@ final class Transactions implements Iterator {
 		return isset($this->transactions[$this->position]);
 	}
 }
-
-?>

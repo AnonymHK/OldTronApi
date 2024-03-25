@@ -67,6 +67,10 @@ final class API extends Tools {
 		$broadcast = (array) $this->broadcast($signature);
 		return (object) array_merge($broadcast,$signature);
 	}
+	
+	/**
+	 * 生成钱包地址
+	*/
 	public function generateAddress() : object {
 		$ec = new EC('secp256k1');
 		$key = $ec->genKeyPair();
@@ -154,7 +158,7 @@ final class API extends Tools {
 			throw new Exception('gmp extension is needed !');
 		endif;
 	}
-
+	
 	public function getTransactionById(string $txID,bool $visible = true) : object {
 		$data = [
 			'value'=>$txID,
@@ -163,6 +167,7 @@ final class API extends Tools {
 		$transaction = $this->sender->request('POST','wallet/gettransactionbyid',$data);
 		return $transaction;
 	}
+
 	public function getTransactionInfoById(string $txID) : object {
 		$data = [
 			'value'=>$txID
@@ -177,6 +182,7 @@ final class API extends Tools {
 		$transaction = $this->sender->request('POST','wallet/gettransactioninfobyblocknum',$data);
 		return $transaction;
 	}
+	
 	public function getTransactionsRelated(string $address = null,bool $confirmed = null,bool $to = false,bool $from = false,bool $searchinternal = true,int $limit = 20,string $order = 'block_timestamp,desc',int $mintimestamp = null,int $maxtimestamp = null) : object {
 		$data = array();
 		if(is_null($confirmed) === false):
@@ -216,6 +222,7 @@ final class API extends Tools {
 		$this->sender = clone $this->sender;
 		return $transactions;
 	}
+
 	public function createAccount(string $newaddress,string $address = null) : object {
 		$newaddress = $this->address2hex($newaddress);
 		if(is_null($address) and isset($this->wallet) === false) throw new InvalidArgumentException('The address argument is empty and no wallet is set by default !');
@@ -229,6 +236,7 @@ final class API extends Tools {
 		$broadcast = (array) $this->broadcast($signature);
 		return (object) array_merge($broadcast,$signature);
 	}
+
 	public function getAccount(string $address = null) : object {
 		if(is_null($address) and isset($this->wallet) === false) throw new InvalidArgumentException('The address argument is empty and no wallet is set by default !');
 		$address = $this->address2hex(is_null($address) ? $this->wallet : $address);
@@ -445,5 +453,3 @@ final class API extends Tools {
 		};
 	}
 }
-
-?>

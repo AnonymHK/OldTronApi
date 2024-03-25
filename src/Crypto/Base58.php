@@ -84,5 +84,3 @@ abstract class Base58 {
 		return $digits;
 	}
 }
-
-?>

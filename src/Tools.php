@@ -21,6 +21,10 @@ abstract class Tools {
 			return $address;
 		endif;
 	}
+
+	/**
+	 * 验证TRC地址是否有效
+	 */
 	public function validation(string $address) : bool {
 		if(preg_match('/^T[A-HJ-NP-Za-km-z1-9]{33}$/',$address)):
 			$hex = $this->address2hex($address);
@@ -31,5 +35,3 @@ abstract class Tools {
 		endif;
 	}
 }
-
-?>

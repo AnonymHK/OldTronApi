@@ -40,5 +40,3 @@ final class Requests {
 		curl_setopt($this->curl,CURLOPT_RETURNTRANSFER,true);
 	}
 }
-
-?>

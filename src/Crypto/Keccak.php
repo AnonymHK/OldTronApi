@@ -242,5 +242,3 @@ abstract class Keccak {
 		endif;
 	}
 }
-
-?>
